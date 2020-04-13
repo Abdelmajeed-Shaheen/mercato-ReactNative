@@ -2,14 +2,20 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   authButton: {
-    alignSelf: "stretch",
-    alignItems: "center",
-    padding: 20,
-    backgroundColor: "rgb(20,90,100)",
-    marginTop: 30,
+    marginTop: 10,
+    paddingTop: 15,
+    paddingBottom: 15,
+    marginLeft: 30,
+    marginRight: 30,
+    borderRadius: 30,
+    borderWidth: 1,
+    borderColor: "#fff",
+    backgroundColor: "rgb(70,144,69)",
+    paddingRight: 50,
+    paddingLeft: 50,
   },
   authButtonText: {
-    color: "#FCFDFF",
+    color: "rgb(254, 241, 5)",
     fontWeight: "bold",
     fontSize: 18,
   },
@@ -23,7 +29,7 @@ const styles = StyleSheet.create({
     paddingLeft: 60,
   },
   authOther: {
-    color: "rgb(20,90,100)",
+    color: "rgb(70,144,69)",
     marginTop: 15,
   },
   authTextInput: {
@@ -31,15 +37,15 @@ const styles = StyleSheet.create({
     textAlign: "left",
     height: 40,
     marginBottom: 30,
-    color: "rgb(20,90,100)",
-    borderBottomColor: "rgb(20,90,100)",
+    color: "rgb(70,144,69)",
+    borderBottomColor: "rgb(70,144,69)",
     borderBottomWidth: 1,
   },
   authTitle: {
-    color: "rgb(20,90,100)",
+    color: "rgb(70,144,69)",
     fontSize: 24,
     marginBottom: 20,
-    borderBottomColor: "rgb(20,90,100)",
+    borderBottomColor: "rgb(70,144,69)",
   },
   profileImage: {
     height: 75,
@@ -49,7 +55,7 @@ const styles = StyleSheet.create({
   },
   profiletext: {
     textAlign: "left",
-    color: "rgb(20,90,100)",
+    color: "rgb(70,144,69)",
     fontSize: 16,
   },
 });
