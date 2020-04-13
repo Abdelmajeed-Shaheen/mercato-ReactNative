@@ -16,17 +16,17 @@ class Signup extends Component {
     const { username, password, first_name, last_name } = this.state;
     return (
       <View style={styles.authContainer}>
-        <Text style={styles.authTitle}>Signup</Text>
+        <Text style={styles.authTitle}>Sign up</Text>
         <TextInput
           style={styles.authTextInput}
-          placeholder="firstname"
+          placeholder="Firstname"
           placeholderTextColor="#A6AEC1"
           value={first_name}
           onChangeText={(first_name) => this.setState({ first_name })}
         />
         <TextInput
           style={styles.authTextInput}
-          placeholder="lastname"
+          placeholder="Lastname"
           placeholderTextColor="#A6AEC1"
           value={last_name}
           onChangeText={(last_name) => this.setState({ last_name })}
@@ -49,13 +49,13 @@ class Signup extends Component {
 
         <TouchableOpacity
           style={styles.authButton}
-          onPress={() => this.props.signup(this.state)}
+          onPress={() => alert("You cant sign up yet")}
         >
           <Text style={styles.authButtonText}>Sign up</Text>
         </TouchableOpacity>
         <Text
           style={styles.authOther}
-          onPress={() => navigation.replace(LOGIN.toString())}
+          onPress={() => alert("There's no log in yet")}
         >
           Click here to log in!
         </Text>
