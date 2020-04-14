@@ -2,7 +2,7 @@ import React from "react";
 
 //Navigation
 import { createStackNavigator } from "@react-navigation/stack";
-import { USER, SIGNUP, LOGIN } from "../screenNames";
+import { SIGNUP, LOGIN } from "../screenNames";
 import screenOptions from "../screenOptions";
 
 //Components
