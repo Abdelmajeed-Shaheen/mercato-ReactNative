@@ -18,7 +18,7 @@ class Signup extends Component {
     username: "",
     password: "",
     first_name: "",
-    last_name: "",
+    last_name: ""
   };
 
   render() {
@@ -32,21 +32,21 @@ class Signup extends Component {
           placeholder="First Name"
           placeholderTextColor="#A6AEC1"
           value={first_name}
-          onChangeText={(first_name) => this.setState({ first_name })}
+          onChangeText={first_name => this.setState({ first_name })}
         />
         <TextInput
           style={styles.authTextInput}
           placeholder="Last Name"
           placeholderTextColor="#A6AEC1"
           value={last_name}
-          onChangeText={(last_name) => this.setState({ last_name })}
+          onChangeText={last_name => this.setState({ last_name })}
         />
         <TextInput
           style={styles.authTextInput}
           placeholder="Username"
           placeholderTextColor="#A6AEC1"
           value={username}
-          onChangeText={(username) => this.setState({ username })}
+          onChangeText={username => this.setState({ username })}
         />
         <TextInput
           style={styles.authTextInput}
@@ -54,7 +54,7 @@ class Signup extends Component {
           placeholderTextColor="#A6AEC1"
           secureTextEntry={true}
           value={password}
-          onChangeText={(password) => this.setState({ password })}
+          onChangeText={password => this.setState({ password })}
         />
 
         <TouchableOpacity
@@ -65,7 +65,7 @@ class Signup extends Component {
         </TouchableOpacity>
         <Text
           style={styles.authOther}
-          onPress={() => navigation.replace(LOGIN.toString())}
+          onPress={() => navigation.replace(LOGIN.toString())} // <-- why toString?
         >
           Click here to log in!
         </Text>

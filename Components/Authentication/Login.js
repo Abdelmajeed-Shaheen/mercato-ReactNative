@@ -16,7 +16,7 @@ import { connect } from "react-redux";
 class Login extends Component {
   state = {
     username: "",
-    password: "",
+    password: ""
   };
   render() {
     const { username, password } = this.state;
@@ -29,7 +29,7 @@ class Login extends Component {
           placeholder="Username"
           placeholderTextColor="#A6AEC1"
           value={username}
-          onChangeText={(username) => this.setState({ username })}
+          onChangeText={username => this.setState({ username })}
         />
         <TextInput
           style={styles.authTextInput}
@@ -37,7 +37,7 @@ class Login extends Component {
           placeholderTextColor="#A6AEC1"
           secureTextEntry={true}
           value={password}
-          onChangeText={(password) => this.setState({ password })}
+          onChangeText={password => this.setState({ password })}
         />
         <TouchableOpacity
           style={styles.authButton}
@@ -47,7 +47,7 @@ class Login extends Component {
         </TouchableOpacity>
         <Text
           style={styles.authOther}
-          onPress={() => this.props.navigation.navigate(SIGNUP)}
+          onPress={() => navigation.navigate(SIGNUP)}
         >
           Click here to register!
         </Text>

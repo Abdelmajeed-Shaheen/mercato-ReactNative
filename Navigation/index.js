@@ -10,6 +10,7 @@ const { Navigator, Screen } = createStackNavigator();
 function RootNavigator() {
   return (
     <Navigator>
+      {/* I'm guessing you're planning for more screens? Will this still be a StackNav? */}
       <Screen name={USER} component={UserStack} />
     </Navigator>
   );
