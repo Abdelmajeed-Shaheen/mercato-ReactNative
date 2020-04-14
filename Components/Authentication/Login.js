@@ -47,7 +47,7 @@ class Login extends Component {
         </TouchableOpacity>
         <Text
           style={styles.authOther}
-          onPress={() => this.props.navigation.navigate(SIGNUP)}
+          onPress={() => navigation.navigate(SIGNUP)}
         >
           Click here to register!
         </Text>
