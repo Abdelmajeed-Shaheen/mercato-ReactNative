@@ -25,18 +25,18 @@ const setAuthToken = (token) => {
 
 export const login = (userData) => async (dispatch) => {
   try {
-    const response = await instance.post(`login`, userData);
-    const { token } = response.data;
+    const response = await instance.post(`api/login`, userData);
+    const token = response.data.access;
     dispatch(setCurrentUser(token));
   } catch (error) {
-    console.error("ERROR while logging in", error);
+    console.error(error);
   }
 };
 
 export const register = (userData) => async (dispatch) => {
   try {
-    await instance.post(`register`, userData);
-    dispatch(login(userData));
+    const response = await instance.post(`api/register`, userData);
+    dispatch(setCurrentUser(response.data.tokens.access));
   } catch (error) {
     console.error("ERROR while signing up", error);
   }
