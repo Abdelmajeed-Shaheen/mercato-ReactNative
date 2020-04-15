@@ -10,10 +10,9 @@ const CategoryList = ({ categories }) => {
   const categoriesList = categories.map((category) => (
     <CategoryItem category={category} key={category.name} />
   ));
-  {console.log(categories)}
   return (
     <Content>
-     <List>{categoriesList}</List>
+      <List>{categoriesList}</List>
     </Content>
   );
 };
