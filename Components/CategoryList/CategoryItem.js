@@ -1,17 +1,27 @@
 import React from "react";
-import { ListItem, Thumbnail, Text, Left, Body } from "native-base";
+import { ListItem, Card, CardItem, Thumbnail, Text, Left } from "native-base";
+import { ImageBackground, View } from "react-native";
 
-import logo from "../../assets/images/logo.png";
+import deli from "../../assets/images/deli.jpeg";
+
+import styles from "./styles";
 
 const CategoryItem = ({ category }) => (
-  <ListItem thumbnail>
-    <Left>
-      <Thumbnail square source={logo} />
-    </Left>
-    <Body>
-      <Text> {category.name}</Text>
-    </Body>
-  </ListItem>
+  <ImageBackground source={deli} style={styles.background}>
+    <View style={styles.overlay} />
+    <ListItem button style={styles.listitem}>
+      <Card style={styles.transparent}>
+        <CardItem style={styles.transparent}>
+          <Left>
+            <Text style={styles.text}>{category.name}</Text>
+            <Text note style={styles.text}>
+              {category.distance}
+            </Text>
+          </Left>
+        </CardItem>
+      </Card>
+    </ListItem>
+  </ImageBackground>
 );
 
 export default CategoryItem;
