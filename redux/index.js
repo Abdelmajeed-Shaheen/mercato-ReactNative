@@ -1,7 +1,7 @@
 import { createStore, compose, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 
-import { checkForToken } from "./actions/authentication";
+import { checkForToken } from "./actions";
 
 import rootReducer from "./reducers";
 import { getCategories } from "./actions";

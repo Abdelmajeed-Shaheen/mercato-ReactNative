@@ -7,14 +7,40 @@ import UserStack from "./StackNavigators/UserStack";
 import Category from "../Components/CategoryList/CategoryItem";
 import CategoryStack from "./StackNavigators/CategoryStack";
 
+import CartIcon from "./CartIcon/index";
+
 const { Navigator, Screen } = createStackNavigator();
 
-function RootNavigator() {
+export default function RootTabNavigator() {
   return (
-    <Navigator>
+    <Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ color }) => {
+          let iconName = "";
+          switch (route.name) {
+            case USER:
+              iconName = "account";
+              break;
+
+            case CATEGORY:
+              iconName = "store";
+              break;
+
+            default:
+              return <CartIcon color={color} />;
+          }
+          return (
+            <Icon
+              name={iconName}
+              type="MaterialCommunityIcons"
+              style={{ color }}
+            />
+          );
+        },
+      })}
+    >
       <Screen name={USER} component={UserStack} />
       <Screen name={CATEGORY} component={CategoryStack} />
     </Navigator>
   );
 }
-export default RootNavigator;

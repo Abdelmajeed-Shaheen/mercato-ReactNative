@@ -4,39 +4,40 @@ import decode from "jwt-decode";
 
 import { AsyncStorage } from "react-native";
 
-import { SET_CURRENT_USER } from "../actions/actionTypes";
+import { SET_CURRENT_USER } from "./actionTypes";
 
-const setCurrentUser = (token) => {
-  return {
+const setCurrentUser = (token) => (dispatch) => {
+  dispatch({
     type: SET_CURRENT_USER,
     payload: token ? decode(token) : null,
-  };
+  });
 };
 
-const setAuthToken = (token) => {
+const setAuthToken = async (token) => {
   if (token) {
-    AsyncStorage.setItems("token", token);
+    await AsyncStorage.setItems("token", token);
     instance.defaults.headers.Authorization = `jwt ${token}`;
   } else {
-    AsyncStorage.removeItem("token");
+    await AsyncStorage.removeItem("token");
     delete instance.defaults.headers.Authorization;
   }
 };
 
-export const login = (userData) => async (dispatch) => {
+export const login = (userData, redirect) => async (dispatch) => {
   try {
     const response = await instance.post(`api/login`, userData);
     const token = response.data.access;
     dispatch(setCurrentUser(token));
+    redirect();
   } catch (error) {
     console.error(error);
   }
 };
-
+//when signing up, redirect is not a function
 export const register = (userData) => async (dispatch) => {
   try {
-    const response = await instance.post(`api/register`, userData);
-    dispatch(setCurrentUser(response.data.tokens.access));
+    await instance.post(`api/register`, userData);
+    dispatch(login(userData));
   } catch (error) {
     console.error("ERROR while signing up", error);
   }
@@ -49,6 +50,9 @@ export const checkForToken = () => async (dispatch) => {
   const token = await AsyncStorage.getItem("token");
 
   if (token && decode(token).exp >= currentTimeInSeconds)
-    return dispatch(setCurrentUser(token));
-  else return setAuthToken();
+    dispatch(setCurrentUser(token));
+  else {
+    dispatch(setCurrentUser());
+    return setAuthToken();
+  }
 };
