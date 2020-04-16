@@ -13,3 +13,6 @@ export const CART = "CART";
 
 //Items
 export const ITEMS = "ITEMS";
+
+//Profile
+export const PROFILE = "PROFILE";

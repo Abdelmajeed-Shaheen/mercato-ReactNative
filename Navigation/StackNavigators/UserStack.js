@@ -2,7 +2,7 @@ import React from "react";
 
 //Navigation
 import { createStackNavigator } from "@react-navigation/stack";
-import { SIGNUP, LOGIN } from "../screenNames";
+import { SIGNUP, LOGIN, PROFILE } from "../screenNames";
 import screenOptions from "../screenOptions";
 
 //Components
@@ -15,6 +15,11 @@ const UserStack = () => (
   <Navigator initialRouteName={LOGIN}>
     <Screen name={SIGNUP} component={Signup} options={{ headerShown: false }} />
     <Screen name={LOGIN} component={Login} options={{ headerShown: false }} />
+    <Screen
+      name={PROFILE}
+      component={Profile}
+      options={{ headerShown: false }}
+    />
   </Navigator>
 );
 
