@@ -11,6 +11,7 @@ const Profile = ({ username }) => (
   </View>
 );
 
+// is this working?
 const mapStateToProps = ({ user }) => ({
   username: state.userState.username,
 });

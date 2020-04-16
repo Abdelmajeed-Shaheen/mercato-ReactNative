@@ -2,7 +2,7 @@ import { SET_ITEMS } from "./actionTypes";
 
 import instance from "./instance";
 
-export const getItems = (categoryID, navigation) => async (dispatch) => {
+export const getItems = (categoryID) => async (dispatch) => {
   try {
     const response = await instance.get(`api/categories/${categoryID}`);
     const items = response.data;
