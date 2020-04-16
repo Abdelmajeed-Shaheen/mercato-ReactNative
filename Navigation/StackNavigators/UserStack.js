@@ -15,7 +15,7 @@ import { connect } from "react-redux";
 const { Navigator, Screen } = createStackNavigator();
 
 const UserStack = ({ user }) => (
-  <Navigator initialRouteName={LOGIN}>
+  <Navigator initialRouteName={PROFILE}>
     {user ? (
       <Screen
         name={PROFILE}
@@ -25,24 +25,19 @@ const UserStack = ({ user }) => (
     ) : (
       <>
         <Screen
-          name={SIGNUP}
-          component={Signup}
+          name={LOGIN}
+          component={Login}
           options={{ headerShown: false }}
         />
         <Screen
-          name={LOGIN}
-          component={Login}
+          name={SIGNUP}
+          component={Signup}
           options={{ headerShown: false }}
         />
       </>
     )}
   </Navigator>
 );
-
-const mapStateToProps = (state) => {
-  return {
-    user: state.userState.user,
-  };
-};
+const mapStateToProps = ({ user }) => ({ user });
 
 export default connect(mapStateToProps)(UserStack);
