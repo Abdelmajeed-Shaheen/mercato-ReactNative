@@ -1,15 +1,23 @@
 import React from "react";
 import { ListItem, Card, CardItem, Thumbnail, Text, Left } from "native-base";
 import { ImageBackground, View } from "react-native";
+import { getItems } from "../../redux/actions";
+
+import { ITEMS } from "../../Navigation/screenNames";
 
 import deli from "../../assets/images/deli.jpeg";
 
 import styles from "./styles";
+import { connect } from "react-redux";
 
-const CategoryItem = ({ category }) => (
+const CategoryItem = ({ category, getItems, navigation }) => (
   <ImageBackground source={deli} style={styles.background}>
     <View style={styles.overlay} />
-    <ListItem button style={styles.listitem}>
+    <ListItem
+      button
+      style={styles.listitem}
+      onPress={() => getItems(category.id, navigation.navigate(ITEMS))}
+    >
       <Card style={styles.transparent}>
         <CardItem style={styles.transparent}>
           <Left>
@@ -24,4 +32,10 @@ const CategoryItem = ({ category }) => (
   </ImageBackground>
 );
 
-export default CategoryItem;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getItems: (categoryID, navigation) =>
+      dispatch(getItems(categoryID, navigation)),
+  };
+};
+export default connect(null, mapDispatchToProps)(CategoryItem);

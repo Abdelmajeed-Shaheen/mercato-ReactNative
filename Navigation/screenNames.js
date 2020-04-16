@@ -6,4 +6,10 @@ export const SIGNUP = "Signup";
 export const USER = "User";
 
 //Category
-export const CATEGORY = "Category";
+export const CATEGORY = "Categories";
+
+//Cart
+export const CART = "CART";
+
+//Items
+export const ITEMS = "ITEMS";

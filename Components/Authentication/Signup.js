@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import { TextInput, TouchableOpacity, View, Text } from "react-native";
 
 //Navigation
-import { LOGIN } from "../../Navigation/screenNames";
+import { LOGIN, CATEGORY } from "../../Navigation/screenNames";
 
 //Redux
 import { register } from "../../redux/actions/authentication";
@@ -24,6 +24,8 @@ class Signup extends Component {
   render() {
     const { username, password, first_name, last_name } = this.state;
     const { register, navigation } = this.props;
+    const redirectToCategoryList = () =>
+      navigation.navigate(CATEGORY, { screen: CATEGORY });
     return (
       <View style={styles.authContainer}>
         <Text style={styles.authTitle}>Sign up</Text>
@@ -59,7 +61,7 @@ class Signup extends Component {
 
         <TouchableOpacity
           style={styles.authButton}
-          onPress={() => register(this.state)}
+          onPress={() => register(this.state, redirectToCategoryList)}
         >
           <Text style={styles.authButtonText}>Sign up</Text>
         </TouchableOpacity>

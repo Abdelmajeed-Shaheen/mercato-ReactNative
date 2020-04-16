@@ -6,9 +6,13 @@ import { connect } from "react-redux";
 
 import { List, Content } from "native-base";
 
-const CategoryList = ({ categories }) => {
+const CategoryList = ({ categories, navigation }) => {
   const categoriesList = categories.map((category) => (
-    <CategoryItem category={category} key={category.name} />
+    <CategoryItem
+      category={category}
+      key={category.name}
+      navigation={navigation}
+    />
   ));
   return (
     <Content>

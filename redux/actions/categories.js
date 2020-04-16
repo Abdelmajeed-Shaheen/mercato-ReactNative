@@ -5,6 +5,7 @@ export const getCategories = () => async (dispatch) => {
   try {
     const response = await instance.get("api/categories");
     const categories = response.data;
+
     dispatch({
       type: SET_CATEGORIES,
       payload: categories,

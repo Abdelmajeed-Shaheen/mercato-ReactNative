@@ -12,7 +12,7 @@ import Login from "../../Components/Authentication/Login";
 const { Navigator, Screen } = createStackNavigator();
 
 const UserStack = () => (
-  <Navigator initialRouteName={LOGIN} screenOptions={screenOptions}>
+  <Navigator initialRouteName={LOGIN}>
     <Screen name={SIGNUP} component={Signup} options={{ headerShown: false }} />
     <Screen name={LOGIN} component={Login} options={{ headerShown: false }} />
   </Navigator>

@@ -1,10 +1,8 @@
 import { createStore, compose, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 
-import { checkForToken } from "./actions";
-
 import rootReducer from "./reducers";
-import { getCategories } from "./actions";
+import { getCategories, getItems, checkForToken } from "./actions";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 

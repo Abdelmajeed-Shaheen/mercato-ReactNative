@@ -7,6 +7,7 @@ import { AsyncStorage } from "react-native";
 import { SET_CURRENT_USER } from "./actionTypes";
 
 const setCurrentUser = (token) => (dispatch) => {
+  setAuthToken(token);
   dispatch({
     type: SET_CURRENT_USER,
     payload: token ? decode(token) : null,
@@ -15,7 +16,7 @@ const setCurrentUser = (token) => (dispatch) => {
 
 const setAuthToken = async (token) => {
   if (token) {
-    await AsyncStorage.setItems("token", token);
+    await AsyncStorage.setItem("token", token);
     instance.defaults.headers.Authorization = `jwt ${token}`;
   } else {
     await AsyncStorage.removeItem("token");
@@ -33,13 +34,14 @@ export const login = (userData, redirect) => async (dispatch) => {
     console.error(error);
   }
 };
-//when signing up, redirect is not a function
-export const register = (userData) => async (dispatch) => {
+export const register = (userData, redirect) => async (dispatch) => {
   try {
-    await instance.post(`api/register`, userData);
-    dispatch(login(userData));
+    const response = await instance.post(`api/register`, userData);
+    const token = response.data.tokens.access;
+    dispatch(setCurrentUser(token));
+    redirect();
   } catch (error) {
-    console.error("ERROR while signing up", error);
+    console.error(error);
   }
 };
 

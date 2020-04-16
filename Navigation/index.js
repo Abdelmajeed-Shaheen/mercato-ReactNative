@@ -1,19 +1,30 @@
 import React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
-import { USER, CATEGORY } from "./screenNames";
+import { USER, CATEGORY, CART } from "./screenNames";
+import screenOptions from "./screenOptions";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Icon } from "native-base";
 
 //UserStack
 import UserStack from "./StackNavigators/UserStack";
-import Category from "../Components/CategoryList/CategoryItem";
 import CategoryStack from "./StackNavigators/CategoryStack";
+import CartStack from "./StackNavigators/CartStack";
 
 import CartIcon from "./CartIcon/index";
 
-const { Navigator, Screen } = createStackNavigator();
+const { Navigator, Screen } = createBottomTabNavigator();
 
 export default function RootTabNavigator() {
   return (
     <Navigator
+      initialRouteName={CATEGORY}
+      tabBarOptions={{
+        showLabel: false,
+        activeTintColor: "rgb(254, 241, 5)",
+        inactiveTintColor: "white",
+        style: {
+          backgroundColor: "rgb(70,144,69)",
+        },
+      }}
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color }) => {
           let iconName = "";
@@ -39,8 +50,13 @@ export default function RootTabNavigator() {
         },
       })}
     >
-      <Screen name={USER} component={UserStack} />
-      <Screen name={CATEGORY} component={CategoryStack} />
+      <Screen name={USER} component={UserStack} screenOptions={screenOptions} />
+      <Screen
+        name={CATEGORY}
+        component={CategoryStack}
+        screenOptions={screenOptions}
+      />
+      <Screen name={CART} component={CartStack} screenOptions={screenOptions} />
     </Navigator>
   );
 }

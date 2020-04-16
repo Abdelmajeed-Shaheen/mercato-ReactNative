@@ -1,2 +1,3 @@
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
 export const SET_CATEGORIES = "SET_CATEGORIES";
+export const SET_ITEMS = "SET_ITEMS";
