@@ -4,7 +4,18 @@ import CategoryItem from "./CategoryItem";
 
 import { connect } from "react-redux";
 
-import { List, Content } from "native-base";
+import {
+  List,
+  Content,
+  Header,
+  Item,
+  Input,
+  Icon,
+  Button,
+  Text,
+} from "native-base";
+
+import styles from "./styles";
 
 const CategoryList = ({ categories, navigation }) => {
   const categoriesList = categories.map((category) => (
@@ -16,6 +27,16 @@ const CategoryList = ({ categories, navigation }) => {
   ));
   return (
     <Content>
+      <Header searchBar rounded style={styles.background}>
+        <Item>
+          <Icon name="ios-search" />
+          <Input placeholder="Search in categories" />
+          <Icon name="store" />
+        </Item>
+        <Button transparent>
+          <Text style={styles.yellow}>Search</Text>
+        </Button>
+      </Header>
       <List>{categoriesList}</List>
     </Content>
   );
