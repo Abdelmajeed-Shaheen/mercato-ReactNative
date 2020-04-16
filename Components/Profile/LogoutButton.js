@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { logout } from "../../redux/actions/authentication";
 
 const LogoutButton = ({ logout }) => (
-  <Button full danger onPress={() => logout}>
+  <Button full danger onPress={logout}>
     <Text>Logout</Text>
   </Button>
 );

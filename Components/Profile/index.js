@@ -11,8 +11,8 @@ const Profile = ({ username }) => (
   </View>
 );
 
-const mapStateToProps = ({ user }) => ({
-  username: state.userState.username,
-});
+// const mapStateToProps = ({ user }) => ({
+//   username: user?.username,
+// });
 
-export default connect(mapStateToProps)(Profile);
+export default Profile;
