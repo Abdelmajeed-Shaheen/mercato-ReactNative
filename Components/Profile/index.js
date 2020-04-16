@@ -12,7 +12,7 @@ const Profile = ({ username }) => (
 );
 
 const mapStateToProps = ({ user }) => ({
-  username: user?.username,
+  username: state.userState.username,
 });
 
 export default connect(mapStateToProps)(Profile);
