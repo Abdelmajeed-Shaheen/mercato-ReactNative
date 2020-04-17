@@ -21,6 +21,10 @@ import { Image } from "react-native";
 // Style
 import styles from "./styles";
 
+/* trying to add items to cart */
+import { addItemToCart } from "../../redux/actions";
+import { connect } from "react-redux";
+
 class ItemDetail extends Component {
   state = {
     quantity: 1,
@@ -64,7 +68,10 @@ class ItemDetail extends Component {
           </Right>
           <CardItem>
             <Body>
-              <Button success>
+              <Button
+                success
+                onPress={() => this.props.addItemToCart(this.state)}
+              >
                 <Body>
                   <Text style={styles.yellow}>Add</Text>
                 </Body>
@@ -77,4 +84,8 @@ class ItemDetail extends Component {
   }
 }
 
-export default ItemDetail;
+const mapDispatchToProps = (dispatch) => ({
+  addItemToCart: (item) => dispatch(addItemToCart(item)),
+});
+
+export default connect(null, mapDispatchToProps)(ItemDetail);
