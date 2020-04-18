@@ -59,6 +59,7 @@ class ItemDetail extends Component {
                   onChange={(num) => {
                     this.setState({ quantity: num });
                   }}
+                  quantityProps={this.state.quantity}
                 />
               </Body>
             </Body>
@@ -69,8 +70,14 @@ class ItemDetail extends Component {
           <CardItem>
             <Body>
               <Button
+                quantityProps={this.state.quantity}
                 success
-                onPress={() => this.props.addItemToCart(this.state)}
+                onPress={() =>
+                  this.props.addItemToCart({
+                    item: item,
+                    quantity: this.state.quantity,
+                  })
+                }
               >
                 <Body>
                   <Text style={styles.yellow}>Add</Text>
