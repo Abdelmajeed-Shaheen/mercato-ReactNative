@@ -39,28 +39,34 @@ const ItemCart = ({
           </>
         ) : null}
 
-        <Icon
-          name="shoppingcart"
-          type="AntDesign"
-          size={30}
-          style={{ color }}
-        />
-        <Text>Your cart is empty</Text>
+        {cart.length ? (
+          <View>
+            <Button success onPress={() => removeAllItems()}>
+              <Text>Remove All Items</Text>
+            </Button>
+          </View>
+        ) : (
+          <>
+            <Icon
+              name="shoppingcart"
+              type="AntDesign"
+              size={30}
+              style={{ color }}
+            />
+            <Text>Your cart is empty</Text>
 
-        <View>
-          <Button
-            success
-            onPress={() => navigation.navigate(CATEGORY, { screen: CATEGORY })}
-          >
-            <Text>Shop Now</Text>
-          </Button>
-        </View>
-
-        <View>
-          <Button success onPress={() => removeAllItems()}>
-            <Text>Remove All Items</Text>
-          </Button>
-        </View>
+            <View>
+              <Button
+                success
+                onPress={() =>
+                  navigation.navigate(CATEGORY, { screen: CATEGORY })
+                }
+              >
+                <Text>Shop Now</Text>
+              </Button>
+            </View>
+          </>
+        )}
       </List>
     </Body>
   );

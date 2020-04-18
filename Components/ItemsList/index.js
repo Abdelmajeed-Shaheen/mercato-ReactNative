@@ -13,6 +13,8 @@ import {
 
 import ItemComponent from "./Item";
 
+import clearItems from "../../redux/actions/items";
+
 import styles from "./styles";
 
 class ItemsList extends Component {
@@ -29,9 +31,12 @@ class ItemsList extends Component {
     });
   };
 
+  componentWillUnmount = () => {
+    this.props.clearAllItems;
+  };
+
   render() {
     const { navigation } = this.props;
-
     const itemsList = this.filterCategories().map((item) => (
       <ItemComponent item={item} key={item.name} navigation={navigation} />
     ));
@@ -45,7 +50,7 @@ class ItemsList extends Component {
               value={this.state.query}
               onChangeText={this.setQuery}
             />
-            <Icon name="close" onPress={(text) => this.setState({ text })} />
+            <Icon name="close" onPress={() => this.setState({ query: "" })} />
           </Item>
         </Header>
 
@@ -57,4 +62,9 @@ class ItemsList extends Component {
 
 const mapStateToProps = (state) => ({ items: state.itemState.items });
 
-export default connect(mapStateToProps)(ItemsList);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    clearAllItems: () => dispatch(clearItems()),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(ItemsList);

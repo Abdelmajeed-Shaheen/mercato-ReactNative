@@ -13,8 +13,11 @@ export default (items = [], { type, payload }) => {
 
       if (foundItem) {
         return items.map((item) =>
-          item === foundItem
-            ? { ...item, quantity: item.quantity + newItem.quantity }
+          item === foundItem && item.in_stock > item.quantity
+            ? {
+                ...item,
+                quantity: item.quantity + newItem.quantity,
+              }
             : item
         );
       } else return [...items, newItem];
