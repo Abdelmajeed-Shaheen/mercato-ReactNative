@@ -1,38 +1,68 @@
 import React from "react";
-import { Text, Button } from "native-base";
+import { Text, Button, List, Body, View, Icon } from "native-base";
 import { connect } from "react-redux";
-import { USER, LOGIN } from "../../Navigation/screenNames";
+import { USER, LOGIN, CATEGORY } from "../../Navigation/screenNames";
 
 /* a new action */
-import { checkoutCart } from "../../redux/actions";
+import { checkoutCart, removeAllItemsFromCart } from "../../redux/actions";
 import CartItem from "./CartItem";
 
-const ItemCart = ({ cart, user, checkoutCart, Navigation }) => {
+const ItemCart = ({
+  cart,
+  user,
+  checkoutCart,
+  navigation,
+  removeAllItems,
+  color,
+}) => {
   const cartItems = cart.map((item) => (
-    <CartItem item={item} key={item.name} />
+    <CartItem item={item} key={item.item.name} />
   ));
 
   return (
-    <list>
-      {cartItems.length ? (
-        <>
-          {cartItems}
+    <Body>
+      <List>
+        {cartItems.length ? (
+          <>
+            {cartItems}
+
+            <Button
+              success
+              onPress={
+                user
+                  ? () => checkoutCart({ date: new Date(), items: cart })
+                  : () => navigation.navigate(USER, { screen: LOGIN })
+              }
+            >
+              <Text>{user ? "Checkout" : "Login to checkout"}</Text>
+            </Button>
+          </>
+        ) : null}
+
+        <Icon
+          name="shoppingcart"
+          type="AntDesign"
+          size={30}
+          style={{ color }}
+        />
+        <Text>Your cart is empty</Text>
+
+        <View>
           <Button
-            full
-            danger
-            onPress={
-              user
-                ? () => checkoutCart({ date: new Date(), items: cart })
-                : () => Navigation.Navigate(USER, { screen: LOGIN })
-            }
+            success
+            onPress={() => navigation.navigate(CATEGORY, { screen: CATEGORY })}
           >
-            <Text>{user ? "Checkout" : "Login to checkout"}</Text>
+            <Text>Shop Now</Text>
           </Button>
-        </>
-      ) : (
-        <Text style={{ textAlign: "center" }}>Buy something</Text>
-      )}
-    </list>
+        </View>
+
+        <View>
+          <Button success onPress={() => removeAllItems()}>
+            <Text>Remove All Items</Text>
+          </Button>
+        </View>
+      </List>
+    </Body>
   );
 };
 
@@ -41,6 +71,11 @@ const mapStateToProps = ({ cart, user }) => ({
   user,
 });
 
-const mapDispatchToProps = { checkoutCart };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    checkoutCart,
+    removeAllItems: () => dispatch(removeAllItemsFromCart()),
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ItemCart);

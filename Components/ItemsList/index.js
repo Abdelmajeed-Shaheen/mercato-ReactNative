@@ -15,26 +15,45 @@ import ItemComponent from "./Item";
 
 import styles from "./styles";
 
-const ItemsList = ({ items, navigation }) => {
-  const itemsList = items.map((item) => (
-    <ItemComponent item={item} key={item.name} navigation={navigation} />
-  ));
-  return (
-    <Content>
-      <Header searchBar rounded style={styles.background}>
-        <Item>
-          <Icon name="ios-search" />
-          <Input placeholder="Search" />
-          <Icon name="ios" />
-        </Item>
-        <Button transparent>
-          <Text style={styles.yellow}>Search</Text>
-        </Button>
-      </Header>
-      <List>{itemsList}</List>
-    </Content>
-  );
-};
+class ItemsList extends Component {
+  state = {
+    query: "",
+  };
+
+  setQuery = (query) => this.setState({ query });
+
+  filterCategories = () => {
+    const query = this.state.query.toLowerCase();
+    return this.props.items.filter((item) => {
+      return `${item.name}`.toLowerCase().includes(query);
+    });
+  };
+
+  render() {
+    const { navigation } = this.props;
+
+    const itemsList = this.filterCategories().map((item) => (
+      <ItemComponent item={item} key={item.name} navigation={navigation} />
+    ));
+    return (
+      <Content>
+        <Header searchBar rounded style={styles.background}>
+          <Item>
+            <Icon name="ios-search" />
+            <Input
+              placeholder="Search"
+              value={this.state.query}
+              onChangeText={this.setQuery}
+            />
+            <Icon name="close" onPress={(text) => this.setState({ text })} />
+          </Item>
+        </Header>
+
+        <List>{itemsList}</List>
+      </Content>
+    );
+  }
+}
 
 const mapStateToProps = (state) => ({ items: state.itemState.items });
 

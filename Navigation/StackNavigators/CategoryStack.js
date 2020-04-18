@@ -12,21 +12,9 @@ const { Navigator, Screen } = createStackNavigator();
 
 const CategoryStack = () => (
   <Navigator initialRouteName={CATEGORY} screenOptions={screenOptions}>
-    <Screen
-      name={CATEGORY}
-      component={CategoryList}
-      options={{ headerShown: false }}
-    />
-    <Screen
-      name={ITEMS}
-      component={ItemsList}
-      options={{ headerShown: false }}
-    />
-    <Screen
-      name={ITEM}
-      component={ItemDetail}
-      options={{ headerShown: false }}
-    />
+    <Screen name={CATEGORY} component={CategoryList} />
+    <Screen name={ITEMS} component={ItemsList} />
+    <Screen name={ITEM} component={ItemDetail} />
   </Navigator>
 );
 

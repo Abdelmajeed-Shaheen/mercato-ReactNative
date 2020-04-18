@@ -12,3 +12,7 @@ web-report/
 
 # macOS
 .DS_Store
+Components/ItemsList.js/index.js
+
+Components/ItemsList.js/Item.js
+Components/ItemsList.js/styles.js

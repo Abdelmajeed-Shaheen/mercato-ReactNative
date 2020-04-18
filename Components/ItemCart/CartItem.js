@@ -14,7 +14,7 @@ import { removeItemFromCart } from "../../redux/actions";
 const CartItem = ({ item, removeItemFromCart }) => (
   <ListItem style={styles.listStyle}>
     <Left>
-      <Text style={styles.name}>{item.name}</Text>
+      <Text style={styles.name}>{item.item.name}</Text>
       <Text note style={styles}>
         {item.price}
       </Text>
@@ -24,7 +24,7 @@ const CartItem = ({ item, removeItemFromCart }) => (
     </Body>
     <Right>
       <Button transparent onPress={() => removeItemFromCart(item)}>
-        <Icon name="trash" style={styles} />
+        <Icon name="trash" style={styles.red} />
       </Button>
     </Right>
   </ListItem>

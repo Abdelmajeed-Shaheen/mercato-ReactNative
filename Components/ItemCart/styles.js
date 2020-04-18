@@ -18,6 +18,9 @@ const styles = StyleSheet.create({
     color: "#42566E",
     fontSize: 21,
   },
+  red: {
+    color: "red",
+  },
 });
 
 export default styles;

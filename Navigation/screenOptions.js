@@ -4,6 +4,7 @@ export default {
   },
   headerTitleStyle: {
     fontWeight: "bold",
+    color: "yellow",
   },
-  headerTintColor: "#A6AEC1",
+  headerTintColor: "yellow",
 };
