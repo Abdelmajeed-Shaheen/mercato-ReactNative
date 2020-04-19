@@ -36,43 +36,42 @@ class ItemDetail extends Component {
     const { item } = this.props.route.params;
     return (
       <Content>
-        <Card style={{ flex: 0 }}>
-          <CardItem>
-            <Left>
-              <Thumbnail source={{ uri: "Image URL" }} />
-              <Body>
-                <Text>{item.name}</Text>
-              </Body>
-            </Left>
-          </CardItem>
-          <CardItem>
+        <View>
+          <Left>
+            <Thumbnail source={{ uri: "Image URL" }} />
             <Body>
-              <Image
-                source={{ uri: "Image URL" }}
-                style={{ height: 200, width: 200, flex: 1 }}
-              />
-              <Body>
-                <InputSpinner
-                  max={item.in_stock}
-                  min={1}
-                  step={1}
-                  color={"rgb(70,144,69)"}
-                  value={this.state.quantity}
-                  onChange={(num) => {
-                    this.setState({ quantity: num });
-                  }}
-                  quantityProps={this.state.quantity}
-                />
-              </Body>
+              <Text>{item.name}</Text>
             </Body>
-          </CardItem>
+          </Left>
+
+          <Body>
+            <Image
+              source={{ uri: "Image URL" }}
+              style={{ height: 200, width: 200, flex: 1 }}
+            />
+            <Body>
+              <InputSpinner
+                max={item.in_stock}
+                min={1}
+                step={1}
+                color={"rgb(70,144,69)"}
+                value={this.state.quantity}
+                onChange={(num) => {
+                  this.setState({ quantity: num });
+                }}
+              />
+            </Body>
+          </Body>
           <Right>
             <Text>{item.price} JD</Text>
           </Right>
-          <CardItem>
+          {item.in_stock === 0 ? (
+            <Body>
+              <Text>Out Of Stock!</Text>
+            </Body>
+          ) : (
             <Body>
               <Button
-                quantityProps={this.state.quantity}
                 success
                 onPress={() =>
                   this.props.addItemToCart({
@@ -99,8 +98,8 @@ class ItemDetail extends Component {
                 </Body>
               </Button>
             </Body>
-          </CardItem>
-        </Card>
+          )}
+        </View>
       </Content>
     );
   }

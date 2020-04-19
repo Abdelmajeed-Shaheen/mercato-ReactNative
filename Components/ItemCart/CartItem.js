@@ -1,5 +1,14 @@
 import React from "react";
-import { Text, Left, Body, Right, Button, ListItem, Icon } from "native-base";
+import {
+  Text,
+  Left,
+  Body,
+  Right,
+  Button,
+  ListItem,
+  Icon,
+  View,
+} from "native-base";
 
 import { connect } from "react-redux";
 

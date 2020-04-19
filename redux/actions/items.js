@@ -14,3 +14,7 @@ export const getItems = (categoryID, navigation) => async (dispatch) => {
     console.error(error);
   }
 };
+
+export const clearItems = () => ({
+  type: CLEAR_ITEMS,
+});
