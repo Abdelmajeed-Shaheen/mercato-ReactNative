@@ -49,55 +49,59 @@ class ItemDetail extends Component {
               source={{ uri: "Image URL" }}
               style={{ height: 200, width: 200, flex: 1 }}
             />
-            <Body>
-              <InputSpinner
-                max={item.in_stock}
-                min={1}
-                step={1}
-                color={"rgb(70,144,69)"}
-                value={this.state.quantity}
-                onChange={(num) => {
-                  this.setState({ quantity: num });
-                }}
-              />
-            </Body>
           </Body>
           <Right>
             <Text>{item.price} JD</Text>
           </Right>
           {item.in_stock === 0 ? (
             <Body>
-              <Text>Out Of Stock!</Text>
+              <Text style={{ backgroundColor: "red", opacity: 0.5 }}>
+                Out Of Stock!
+              </Text>
             </Body>
           ) : (
-            <Body>
-              <Button
-                success
-                onPress={() =>
-                  this.props.addItemToCart({
-                    item: item,
-                    quantity: this.state.quantity,
-                  })
-                }
-                onPressIn={() => {
-                  showMessage({
-                    message: "Added to cart",
-                    type: "success",
-                    duration: 2000,
-                    backgroundColor: "#485460",
-                    color: "#d2dae2",
-                    titleStyle: {
-                      fontSize: 20,
-                      alignSelf: "center",
-                    },
-                  });
-                }}
-              >
-                <Body>
-                  <Text style={styles.yellow}>Add</Text>
-                </Body>
-              </Button>
-            </Body>
+            <>
+              <Body>
+                <InputSpinner
+                  max={item.in_stock}
+                  min={1}
+                  step={1}
+                  color={"rgb(70,144,69)"}
+                  value={this.state.quantity}
+                  onChange={(num) => {
+                    this.setState({ quantity: num });
+                  }}
+                />
+              </Body>
+              <Body>
+                <Button
+                  success
+                  onPress={() =>
+                    this.props.addItemToCart({
+                      item: item,
+                      quantity: this.state.quantity,
+                    })
+                  }
+                  onPressIn={() => {
+                    showMessage({
+                      message: "Added to cart",
+                      type: "success",
+                      duration: 2000,
+                      backgroundColor: "#485460",
+                      color: "#d2dae2",
+                      titleStyle: {
+                        fontSize: 20,
+                        alignSelf: "center",
+                      },
+                    });
+                  }}
+                >
+                  <Body>
+                    <Text style={styles.yellow}>Add</Text>
+                  </Body>
+                </Button>
+              </Body>
+            </>
           )}
         </View>
       </Content>

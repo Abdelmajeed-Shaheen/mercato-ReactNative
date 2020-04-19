@@ -116,7 +116,6 @@ const ItemCart = ({
           size={30}
           style={{ color }}
         /> */}
-
       </List>
     </Body>
   );
