@@ -2,11 +2,14 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   listStyle: {
-    borderBottomWidth: 0,
+    borderBottomWidth: 1,
+    borderRadius: 20,
+    width: 400,
   },
   name: {
     color: "#42566E",
-    marginLeft: 16,
+    fontFamily: "Georgia",
+    fontSize: 20,
   },
   option: {
     marginLeft: 16,
@@ -20,6 +23,7 @@ const styles = StyleSheet.create({
   },
   red: {
     color: "red",
+    marginRight: 15,
   },
 });
 

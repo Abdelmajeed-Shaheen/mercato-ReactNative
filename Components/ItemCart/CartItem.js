@@ -21,24 +21,20 @@ import { removeItemFromCart } from "../../redux/actions";
 /*trying to make this a real cart */
 
 const CartItem = ({ item, removeItemFromCart }) => (
-  <View>
-    <ListItem style={styles.listStyle}>
-      <Left>
-        <Text style={styles.name}>{item.item.name}</Text>
-        <Text note style={styles}>
-          {item.price}
-        </Text>
-      </Left>
-      <Body>
-        <Text style={styles}>{item.quantity}</Text>
-      </Body>
-      <Right>
-        <Button transparent onPress={() => removeItemFromCart(item)}>
-          <Icon name="trash" style={styles.red} />
-        </Button>
-      </Right>
-    </ListItem>
-  </View>
+  <ListItem style={styles.listStyle}>
+    <Left>
+      <Text style={styles.name}>
+        {item.item.name}
+        {"\n"}Quantity: {item.quantity}
+      </Text>
+      <Text>{item.price}</Text>
+    </Left>
+    <Right>
+      <Button transparent onPress={() => removeItemFromCart(item)}>
+        <Icon name="trash" style={styles.red} />
+      </Button>
+    </Right>
+  </ListItem>
 );
 
 mapDispatchToProps = (dispatch) => ({

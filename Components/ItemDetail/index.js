@@ -25,6 +25,8 @@ import styles from "./styles";
 import { addItemToCart } from "../../redux/actions";
 import { connect } from "react-redux";
 
+import { showMessage, hideMessage } from "react-native-flash-message";
+
 class ItemDetail extends Component {
   state = {
     quantity: 1,
@@ -77,6 +79,19 @@ class ItemDetail extends Component {
                     quantity: this.state.quantity,
                   })
                 }
+                onPressIn={() => {
+                  showMessage({
+                    message: "Added to cart",
+                    type: "success",
+                    duration: 2000,
+                    backgroundColor: "#485460",
+                    color: "#d2dae2",
+                    titleStyle: {
+                      fontSize: 20,
+                      alignSelf: "center",
+                    },
+                  });
+                }}
               >
                 <Body>
                   <Text style={styles.yellow}>Add</Text>
