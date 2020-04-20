@@ -38,6 +38,8 @@ const styles = StyleSheet.create({
   },
   yellow: {
     color: "yellow",
+    fontSize: 18,
+    fontFamily: "Georgia",
   },
 });
 
