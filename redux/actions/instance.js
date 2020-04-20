@@ -3,5 +3,3 @@ import axios from "axios";
 export const instance = axios.create({
   baseURL: "https://mercatoapp.herokuapp.com/",
 });
-
-export default instance;

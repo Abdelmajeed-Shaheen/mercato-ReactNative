@@ -11,7 +11,7 @@ import {
   Item,
   Input,
   Icon,
-  Button,
+  Spinner,
   Text,
 } from "native-base";
 
@@ -33,6 +33,8 @@ class CategoryList extends Component {
   };
 
   render() {
+    if (this.props.loading) return <Spinner color="rgb(70,144,69)" />;
+
     const { navigation } = this.props;
     const categoriesList = this.filterCategories().map((category) => (
       <CategoryItem
@@ -54,6 +56,7 @@ class CategoryList extends Component {
             <Icon name="close" onPress={() => this.setState({ query: "" })} />
           </Item>
         </Header>
+
         <List>{categoriesList}</List>
       </Content>
     );
@@ -62,6 +65,7 @@ class CategoryList extends Component {
 
 const mapStateToProps = (state) => ({
   categories: state.categoriesState.categories,
+  loading: !state.categoriesState.categories.length,
 });
 
 export default connect(mapStateToProps)(CategoryList);

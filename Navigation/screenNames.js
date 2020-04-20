@@ -15,6 +15,7 @@ export const CART = "CART";
 export const ITEMS = "ITEMS";
 export const ITEM = "ITEM";
 
-
 //Profile
 export const PROFILE = "PROFILE";
+
+export const THANKYOU = "THANKYOU";

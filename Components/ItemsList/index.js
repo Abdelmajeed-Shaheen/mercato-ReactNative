@@ -6,14 +6,14 @@ import {
   Header,
   Icon,
   Input,
-  Button,
+  Spinner,
   Text,
   Item,
 } from "native-base";
 
 import ItemComponent from "./Item";
 
-import clearItems from "../../redux/actions/items";
+import { clearItems } from "../../redux/actions";
 
 import styles from "./styles";
 
@@ -32,10 +32,12 @@ class ItemsList extends Component {
   };
 
   componentWillUnmount = () => {
-    this.props.clearAllItems;
+    this.props.clearAllItems();
   };
 
   render() {
+    if (this.props.loading) return <Spinner color="rgb(70,144,69)" />;
+
     const { navigation } = this.props;
     const itemsList = this.filterCategories().map((item) => (
       <ItemComponent item={item} key={item.name} navigation={navigation} />
@@ -53,14 +55,20 @@ class ItemsList extends Component {
             <Icon name="close" onPress={() => this.setState({ query: "" })} />
           </Item>
         </Header>
-
-        <List>{itemsList}</List>
+        {this.props.items.length ? (
+          <List>{itemsList}</List>
+        ) : (
+          <Text>Sorry no items available</Text>
+        )}
       </Content>
     );
   }
 }
 
-const mapStateToProps = (state) => ({ items: state.itemState.items });
+const mapStateToProps = (state) => ({
+  items: state.itemState.items,
+  loading: !state.itemState.items.length,
+});
 
 const mapDispatchToProps = (dispatch) => {
   return {

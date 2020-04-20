@@ -22,8 +22,18 @@ const styles = StyleSheet.create({
     fontSize: 21,
   },
   red: {
-    color: "red",
+    color: "black",
     marginRight: 15,
+  },
+  shopButton: {
+    marginTop: 10,
+    marginLeft: 30,
+    marginRight: 30,
+    borderWidth: 1,
+    borderColor: "#fff",
+    backgroundColor: "rgb(70,144,69)",
+    paddingRight: 50,
+    paddingLeft: 50,
   },
 });
 

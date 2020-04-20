@@ -13,7 +13,7 @@ import {
   Icon,
   Right,
   Container,
-  Header,
+  Center,
   Content,
 } from "native-base";
 
@@ -43,213 +43,127 @@ class ItemDetail extends Component {
           <Card>
             <CardItem cardBody>
               <Image
-                source={logo}
+                source={{ uri: item.image }}
                 style={{ height: 320, width: null, flex: 1 }}
               />
             </CardItem>
-            <CardItem style={{ marginTop: 10 }}>
-              <Left>
+            <Card>
+              <CardItem style={{ marginTop: 10 }} cardBody>
+                <Right>
+                  <Body>
+                    <Text
+                      style={{
+                        fontFamily: "Chalkboard SE",
+                        fontSize: 18,
+                      }}
+                    >
+                      {item.name}
+                    </Text>
+                  </Body>
+                </Right>
+              </CardItem>
+              <CardItem>
+                <Right>
+                  <Body>
+                    <Text
+                      style={{
+                        fontFamily: "Chalkboard SE",
+                        fontSize: 18,
+                        marginLeft: 10,
+                      }}
+                    >
+                      Price: {item.price} JD
+                    </Text>
+                  </Body>
+                </Right>
+              </CardItem>
+              <CardItem>
+                {item.in_stock === 0 ? (
+                  <>
+                    <Body>
+                      <Text
+                        style={{
+                          backgroundColor: "red",
+                          fontSize: 28,
+                          fontFamily: "Chalkboard SE",
+                        }}
+                      >
+                        Out Of Stock!
+                      </Text>
+                    </Body>
+                  </>
+                ) : (
+                  <>
+                    <Right>
+                      <Body>
+                        <InputSpinner
+                          style={{ marginLeft: 12 }}
+                          max={item.in_stock}
+                          min={1}
+                          inputStyle={{ fontSize: 24 }}
+                          step={1}
+                          color={"rgb(70,144,69)"}
+                          value={this.state.quantity}
+                          onChange={(num) => {
+                            this.setState({ quantity: num });
+                          }}
+                        />
+                      </Body>
+                    </Right>
+                    <Body>
+                      <Button
+                        rounded
+                        style={{
+                          marginLeft: 55,
+                          backgroundColor: "rgb(70,144,69)",
+                        }}
+                        onPress={() => {
+                          showMessage({
+                            message: "Added To Cart",
+                            type: "success",
+                            duration: 2000,
+                            backgroundColor: "yellow",
+                            color: "rgb(70,144,69)",
+                            titleStyle: {
+                              fontSize: 20,
+                              alignSelf: "center",
+                            },
+                          });
+                          this.props.addItemToCart({
+                            item: item,
+                            quantity: this.state.quantity,
+                          });
+                        }}
+                      >
+                        <Text
+                          style={{
+                            fontFamily: "Chalkboard SE",
+                            fontWeight: "bold",
+                            color: "yellow",
+                          }}
+                        >
+                          Add
+                        </Text>
+                      </Button>
+                    </Body>
+                  </>
+                )}
+              </CardItem>
+              <CardItem style={{ marginLeft: 100 }} cardBody>
                 <Text
                   style={{
-                    fontFamily: "Georgia",
-                    fontSize: 24,
-                    color: "green",
-                  }}
-                >
-                  {item.name}
-                </Text>
-              </Left>
-              <Body>
-                <Text
-                  style={{
-                    fontFamily: "Georgia",
-                    fontSize: 22,
-                    color: "green",
-                    marginLeft: 10,
-                  }}
-                >
-                  {item.price} JD
-                </Text>
-              </Body>
-              <Body>
-                <Text
-                  style={{
-                    fontFamily: "Georgia",
-                    fontSize: 22,
-                    color: "green",
+                    fontFamily: "Chalkboard SE",
+                    fontSize: 18,
                   }}
                 >
                   Available: {item.in_stock}
                 </Text>
-              </Body>
-            </CardItem>
-            <CardItem style={{ marginLeft: 100 }}>
-              {item.in_stock === 0 ? (
-                <>
-                  <Body>
-                    <Text
-                      style={{
-                        backgroundColor: "red",
-                        fontSize: 28,
-                        fontFamily: "Georgia",
-                      }}
-                    >
-                      Out Of Stock!
-                    </Text>
-                  </Body>
-                </>
-              ) : (
-                <>
-                  <Body>
-                    <InputSpinner
-                      style={{ marginLeft: 12 }}
-                      max={item.in_stock}
-                      min={1}
-                      inputStyle={{ fontSize: 24 }}
-                      step={1}
-                      color={"rgb(70,144,69)"}
-                      value={this.state.quantity}
-                      onChange={(num) => {
-                        this.setState({ quantity: num });
-                      }}
-                    />
-
-                    <Button
-                      rounded
-                      style={{
-                        marginLeft: 55,
-                        backgroundColor: "rgb(70,144,69)",
-                      }}
-                      onPress={() =>
-                        this.props.addItemToCart({
-                          item: item,
-                          quantity: this.state.quantity,
-                        })
-                      }
-                      onPressIn={() => {
-                        showMessage({
-                          message: "Added to cart",
-                          type: "success",
-                          duration: 2000,
-                          backgroundColor: "#485460",
-                          color: "#d2dae2",
-                          titleStyle: {
-                            fontSize: 20,
-                            alignSelf: "center",
-                          },
-                        });
-                      }}
-                    >
-                      <Text style={styles.yellow}>Add</Text>
-                    </Button>
-                  </Body>
-                </>
-              )}
-            </CardItem>
+              </CardItem>
+            </Card>
           </Card>
         </Content>
       </Container>
     );
-    // return (
-    //   <Content>
-    //     <View>
-    //       {/* <Left> */}
-    //       {/* <Thumbnail source={{ uri: "Image URL" }} /> */}
-    //       <Thumbnail
-    //         source={logo}
-    //         style={{
-    //           height: 300,
-    //           width: 300,
-    //           marginLeft: 60,
-    //         }}
-    //       />
-    //       <Text>{"\n"}</Text>
-    //       <Text
-    //         style={{
-    //           fontSize: 24,
-    //           fontFamily: "Georgia",
-    //           color: "green",
-    //           marginLeft: 160,
-    //         }}
-    //       >
-    //         {item.name} {"\n"}
-    //       </Text>
-
-    //       {/* </Left> */}
-
-    //       {/* <Body>
-    //         <Image
-    //           source={{ uri: "Image URL" }}
-    //           style={{ height: 200, width: 200, flex: 1 }}
-    //         />
-    //       </Body> */}
-    //       <Right>
-    //         <Text
-    //           style={{ fontSize: 28, fontFamily: "Georgia", color: "green" }}
-    //         >
-    //           {item.price} JD
-    //         </Text>
-    //         <Text>{"\n"}</Text>
-    //       </Right>
-    //       {item.in_stock === 0 ? (
-    //         <Body>
-    //           <Text
-    //             style={{
-    //               backgroundColor: "red",
-    //               fontSize: 28,
-    //               fontFamily: "Georgia",
-    //             }}
-    //           >
-    //             Out Of Stock!
-    //           </Text>
-    //         </Body>
-    //       ) : (
-    //         <>
-    //           <Body>
-    //             <InputSpinner
-    //               max={item.in_stock}
-    //               min={1}
-    //               step={1}
-    //               color={"rgb(70,144,69)"}
-    //               value={this.state.quantity}
-    //               onChange={(num) => {
-    //                 this.setState({ quantity: num });
-    //               }}
-    //             />
-    //           </Body>
-    //           <Body>
-    //             <Button
-    //               success
-    //               onPress={() =>
-    //                 this.props.addItemToCart({
-    //                   item: item,
-    //                   quantity: this.state.quantity,
-    //                 })
-    //               }
-    //               onPressIn={() => {
-    //                 showMessage({
-    //                   message: "Added to cart",
-    //                   type: "success",
-    //                   duration: 2000,
-    //                   backgroundColor: "#485460",
-    //                   color: "#d2dae2",
-    //                   titleStyle: {
-    //                     fontSize: 20,
-    //                     alignSelf: "center",
-    //                   },
-    //                 });
-    //               }}
-    //             >
-    //               <Body>
-    //                 <Text style={styles.yellow}>Add</Text>
-    //               </Body>
-    //             </Button>
-    //           </Body>
-    //         </>
-    //       )}
-    //     </View>
-    //   </Content>
-    // );
   }
 }
 

@@ -11,7 +11,7 @@ import styles from "./styles";
 import { connect } from "react-redux";
 
 const CategoryItem = ({ category, getItems, navigation }) => (
-  <ImageBackground source={deli} style={styles.background}>
+  <ImageBackground source={{ uri: category.image }} style={styles.background}>
     <View style={styles.overlay} />
     <ListItem
       button

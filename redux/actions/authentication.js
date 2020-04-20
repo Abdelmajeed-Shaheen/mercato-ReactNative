@@ -1,4 +1,4 @@
-import instance from "./instance";
+import { instance } from "./instance";
 
 import decode from "jwt-decode";
 
@@ -17,10 +17,10 @@ const setCurrentUser = (token) => (dispatch) => {
 const setAuthToken = async (token) => {
   if (token) {
     await AsyncStorage.setItem("token", token);
-    instance.defaults.headers.Authorization = `jwt ${token}`;
+    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
   } else {
     await AsyncStorage.removeItem("token");
-    delete instance.defaults.headers.Authorization;
+    delete instance.defaults.headers.common.Authorization;
   }
 };
 

@@ -1,5 +1,5 @@
 import { SET_CATEGORIES } from "./actionTypes";
-import instance from "./instance";
+import { instance } from "./instance";
 
 export const getCategories = () => async (dispatch) => {
   try {

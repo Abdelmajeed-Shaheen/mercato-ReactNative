@@ -9,5 +9,10 @@ const styles = StyleSheet.create({
   yellow: {
     color: "yellow",
   },
+
+  spinner: {
+    flex: 1,
+    minWidth: 150,
+  },
 });
 export default styles;
