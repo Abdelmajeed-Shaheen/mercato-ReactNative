@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Text, Content } from "native-base";
+import { Button, Text, Content, Body } from "native-base";
 
 import { connect } from "react-redux";
 
@@ -7,35 +7,28 @@ import { logout } from "../../redux/actions/authentication";
 
 const LogoutButton = ({ logout }) => (
   <Content>
-    <Text
-      style={{
-        marginTop: 230,
-        fontSize: 24,
-        fontFamily: "Chalkboard SE",
-        alignSelf: "center",
-      }}
-    >
-      Change account?
-    </Text>
-    <Button
-      full
-      danger
-      style={{
-        marginTop: 10,
-      }}
-      onPress={logout}
-    >
-      <Text
+    <Body>
+      <Button
+        full
+        danger
+        rounded
         style={{
-          fontSize: 24,
-          fontFamily: "Chalkboard SE",
-
-          justifyContent: "center",
+          marginTop: 10,
         }}
+        onPress={logout}
       >
-        Logout
-      </Text>
-    </Button>
+        <Text
+          style={{
+            fontSize: 24,
+            fontFamily: "Chalkboard SE",
+
+            justifyContent: "center",
+          }}
+        >
+          Logout
+        </Text>
+      </Button>
+    </Body>
   </Content>
 );
 

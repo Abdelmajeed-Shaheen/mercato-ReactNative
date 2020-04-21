@@ -34,7 +34,7 @@ export default function RootTabNavigator() {
               break;
 
             case CATEGORY:
-              iconName = "store";
+              iconName = "basket";
               break;
 
             default:

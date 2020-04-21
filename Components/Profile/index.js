@@ -41,7 +41,7 @@ const Profile = ({ username }) => (
           color: "green",
         }}
       >
-        Basheera
+        Essam
       </Text>
     </Text>
 
@@ -61,29 +61,11 @@ const Profile = ({ username }) => (
           color: "green",
         }}
       >
-        Qaddour Alainya
+        AbuIssa
       </Text>
     </Text>
 
-    <Text style={{ marginTop: 30, marginLeft: 10 }}>
-      <Text
-        style={{
-          fontFamily: "Chalkboard SE",
-          fontSize: 24,
-        }}
-      >
-        E-mail:{" "}
-      </Text>
-      <Text
-        style={{
-          fontSize: 24,
-          fontFamily: "Chalkboard SE",
-          color: "green",
-        }}
-      >
-        ainyabasheera@gmail.com
-      </Text>
-    </Text>
+    <Text style={{ marginTop: 30, marginLeft: 10 }}></Text>
 
     <Text style={{ marginTop: 30, marginLeft: 10 }}>
       <Text

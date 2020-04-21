@@ -55,6 +55,7 @@ class ItemDetail extends Component {
                       style={{
                         fontFamily: "Chalkboard SE",
                         fontSize: 18,
+                        marginLeft: 50,
                       }}
                     >
                       {item.name}
@@ -81,15 +82,17 @@ class ItemDetail extends Component {
                 {item.in_stock === 0 ? (
                   <>
                     <Body>
-                      <Text
-                        style={{
-                          backgroundColor: "red",
-                          fontSize: 28,
-                          fontFamily: "Chalkboard SE",
-                        }}
-                      >
-                        Out Of Stock!
-                      </Text>
+                      <Right>
+                        <Text
+                          style={{
+                            backgroundColor: "red",
+                            fontSize: 28,
+                            fontFamily: "Chalkboard SE",
+                          }}
+                        >
+                          Out Of Stock!
+                        </Text>
+                      </Right>
                     </Body>
                   </>
                 ) : (

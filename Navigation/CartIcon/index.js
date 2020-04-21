@@ -17,7 +17,7 @@ const CartButton = ({ quantity, color }) => (
 );
 
 const mapStateToProps = ({ cart }) => ({
-  quantity: quantityCounter(cart),
+  quantity: cart.length,
 });
 
 export default connect(mapStateToProps)(CartButton);
