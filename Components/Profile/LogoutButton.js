@@ -1,14 +1,42 @@
 import React from "react";
-import { Button, Text } from "native-base";
+import { Button, Text, Content } from "native-base";
 
 import { connect } from "react-redux";
 
 import { logout } from "../../redux/actions/authentication";
 
 const LogoutButton = ({ logout }) => (
-  <Button full danger onPress={logout}>
-    <Text>Logout</Text>
-  </Button>
+  <Content>
+    <Text
+      style={{
+        marginTop: 230,
+        fontSize: 24,
+        fontFamily: "Chalkboard SE",
+        alignSelf: "center",
+      }}
+    >
+      Change account?
+    </Text>
+    <Button
+      full
+      danger
+      style={{
+        marginTop: 10,
+      }}
+      onPress={logout}
+    >
+      <Text
+        style={{
+          fontSize: 24,
+          fontFamily: "Chalkboard SE",
+
+          justifyContent: "center",
+        }}
+      >
+        Logout
+      </Text>
+    </Button>
+  </Content>
 );
 
 const mapDispatchToProps = {
