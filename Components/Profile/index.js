@@ -91,6 +91,7 @@ const Profile = ({ username }) => (
   </Container>
 );
 
+// is this working?
 const mapStateToProps = ({ user }) => ({
   username: user?.username,
 });

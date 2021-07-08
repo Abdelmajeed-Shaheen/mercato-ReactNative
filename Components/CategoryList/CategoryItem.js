@@ -10,6 +10,12 @@ import deli from "../../assets/images/deli.jpeg";
 import styles from "./styles";
 import { connect } from "react-redux";
 
+/**
+ *
+ * Just a reminder that the background image source should probably
+ * be coming from the backend for each catagory.
+ */
+
 const CategoryItem = ({ category, getItems, navigation }) => (
   <ImageBackground source={{ uri: category.image }} style={styles.background}>
     <View style={styles.overlay} />

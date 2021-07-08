@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 
 import { logout } from "../../redux/actions/authentication";
 
+// is this working?
 const LogoutButton = ({ logout }) => (
   <Content>
     <Body>
